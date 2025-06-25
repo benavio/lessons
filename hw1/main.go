@@ -14,7 +14,6 @@ func Link(str string) {
 
 	findLink(newList, marker)
 
-	fmt.Println(len([]byte("http://")) == len([]byte("htpt://")))
 	fmt.Println(newList)
 	fmt.Println(string(newList))
 }
