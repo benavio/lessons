@@ -14,6 +14,11 @@ func main() {
 	newList := []byte(str)
 	marker := []byte("http://")
 
+	hideLink(newList, marker)
+}
+
+func hideLink(newList []byte, marker []byte) {
+
 	for i := 0; i < len(newList); i++ {
 		if i+len(marker) > len(newList) {
 			break
