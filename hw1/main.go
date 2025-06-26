@@ -1,25 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func main() {
+	fmt.Print("Enter string: ")
+	reader := bufio.NewReader(os.Stdin)
+	str, _ := reader.ReadString('\n')
 
-	Link("httsp://weqwehttp://qweqwe.com qwdqw http://qefqef*")
-
-}
-
-func Link(str string) {
 	newList := []byte(str)
 	marker := []byte("http://")
 
-	findLink(newList, marker)
-
-	fmt.Println(len([]byte("http://")) == len([]byte("htpt://")))
-	fmt.Println(newList)
-	fmt.Println(string(newList))
-}
-
-func findLink(newList []byte, marker []byte) {
 	for i := 0; i < len(newList); i++ {
 		if i+len(marker) > len(newList) {
 			break
@@ -34,19 +28,17 @@ func findLink(newList []byte, marker []byte) {
 		}
 
 		if match {
-			hideLink(i+len(marker), newList)
+			for k := i + len(marker); k < len(newList); k++ {
+				if newList[k] != 32 {
+					newList[k] = 42
+				} else {
+					break
+				}
+			}
 			i += len(marker)
 		}
 	}
 
-}
-
-func hideLink(point int, newList []byte) {
-	for k := point; k < len(newList); k++ {
-		if newList[k] != 32 {
-			newList[k] = 42
-		} else {
-			break
-		}
-	}
+	fmt.Println(newList)
+	fmt.Println(string(newList))
 }
