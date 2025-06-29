@@ -7,12 +7,17 @@ import (
 )
 
 func main() {
-	fmt.Print("Enter string: ")
+	fmt.Print("Enter string:  ")
 	reader := bufio.NewReader(os.Stdin)
 	str, _ := reader.ReadString('\n')
 
 	newList := []byte(str)
 	marker := []byte("http://")
+
+	hideLink(newList, marker)
+}
+
+func hideLink(newList []byte, marker []byte) {
 
 	for i := 0; i < len(newList); i++ {
 		if i+len(marker) > len(newList) {
