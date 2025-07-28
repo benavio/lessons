@@ -10,6 +10,7 @@
 
 # Test binary, built with `go test -c`
 *.test
+*.txt
 
 # Code coverage profiles and other test artifacts
 *.out
@@ -23,6 +24,7 @@ profile.cov
 # Go workspace file
 go.work
 go.work.sum
+go.mod
 
 # env file
 .env
